@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    REPOSITORY_URI: "<ECR_REPO_URI>"  # replaced by CodePipeline/parameter store or use CodeBuild env variables
+    REPOSITORY_URI: "637423313956.dkr.ecr.ap-south-1.amazonaws.com/ecs-cicd-sample"  # replaced by CodePipeline/parameter store or use CodeBuild env variables
 phases:
   pre_build:
     commands:
@@ -20,5 +20,6 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION
 artifacts:
-  files: none
+  files:
+    - imagedefinitions.json
 
